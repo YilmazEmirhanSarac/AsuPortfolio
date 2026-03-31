@@ -1,23 +1,37 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Product Designer | Portfolio",
+  description = "A minimalist portfolio for a Product Designer focusing on UI/UX, Research, and Mentorship."
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen flex flex-col items-center">
+		<!-- Layout Wrapper: Constraints the max width for extreme spaciousness and readability -->
+		<div class="w-full max-w-5xl px-6 md:px-12 lg:px-24 mx-auto flex flex-col flex-grow">
+			<Header />
+			<main class="flex-grow w-full py-16 md:py-24">
+				<slot />
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

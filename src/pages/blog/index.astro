@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Get all non-draft blog posts, sorted by newest first
+const allPosts = await getCollection('blog', (entry) => {
+  return entry.data.draft !== true;
+});
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Formatting dates cleanly
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+};
+---
+
+<Layout title="Blog | Asu Pınar Aksu" description="Thoughts on design strategy, research, and minimalism.">
+    <div class="max-w-3xl mx-auto py-12">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 mb-6">Writing & Thoughts</h1>
+        <p class="text-lg text-neutral-500 mb-16">Occasional reflections on design systems, user research, and optimizing the digital experience.</p>
+
+        <div class="flex flex-col space-y-12">
+            {posts.length > 0 ? (
+                posts.map(post => (
+                    <article class="group">
+                        <a href={`/blog/${post.slug}`} class="block">
+                            <h2 class="text-2xl font-semibold text-neutral-900 group-hover:text-neutral-500 transition-colors tracking-tight mb-2">
+                                {post.data.title}
+                            </h2>
+                            <p class="text-neutral-500 mb-3">{post.data.description}</p>
+                            <time class="text-sm font-medium text-neutral-400">
+                                {formatDate(post.data.pubDate)}
+                            </time>
+                        </a>
+                    </article>
+                ))
+            ) : (
+                <p class="text-neutral-500 italic">No posts published yet. Stay tuned!</p>
+            )}
+        </div>
+    </div>
+</Layout>

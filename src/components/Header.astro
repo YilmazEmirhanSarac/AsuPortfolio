@@ -1,0 +1,31 @@
+---
+const links = [
+  { name: 'Services', href: '/#services' },
+  { name: 'Work', href: '/#work' },
+  { name: 'Blog', href: '/blog' },
+];
+---
+
+<header class="w-full py-10 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold tracking-tighter">
+        Product<span class="text-neutral-400">Designer.</span>
+    </a>
+    
+    <nav class="hidden md:flex items-center space-x-8">
+        {links.map(link => (
+            <a 
+                href={link.href} 
+                class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
+               >
+                {link.name}
+            </a>
+        ))}
+    </nav>
+    
+    <a 
+        href="/#contact" 
+        class="px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+    >
+        Let's Talk
+    </a>
+</header>
