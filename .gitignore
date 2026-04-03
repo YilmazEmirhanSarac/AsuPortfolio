@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# AI Context Files
+PROJECT_CONTEXT.md
+ARCHITECTURE.md
+ROADMAP.md
+AI_RULES.md
+.vercel

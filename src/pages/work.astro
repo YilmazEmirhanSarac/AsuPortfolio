@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { featuredWorks } from '../data/data';
+---
+
+<Layout title="Work | Asu Pınar Aksu" description="A curated collection of product and service design projects by Asu Pınar Aksu.">
+    <section class="py-12 md:py-20">
+        <p class="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-4">Portfolio</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 leading-[1.1] mb-6">Selected Work</h1>
+        <p class="text-lg text-neutral-500 max-w-2xl leading-relaxed mb-20">
+            Each project represents a commitment to extreme minimalism, deep user research, and measurable impact.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+            {featuredWorks.map(project => (
+                <ProjectCard 
+                    title={project.title} 
+                    category={project.category} 
+                    imageUrl={project.imageUrl} 
+                    link={project.link} 
+                />
+            ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-24 pt-16 border-t border-neutral-100 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 mb-4">Have a project in mind?</h2>
+            <p class="text-neutral-500 mb-8 max-w-md mx-auto">I'm currently accepting new projects. Let's create something exceptional.</p>
+            <a href="/contact" class="inline-flex px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-all duration-300">
+                Start a Conversation
+            </a>
+        </div>
+    </section>
+</Layout>

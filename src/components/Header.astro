@@ -1,31 +1,89 @@
 ---
+import { siteMetadata } from '../data/data';
+
 const links = [
-  { name: 'Services', href: '/#services' },
-  { name: 'Work', href: '/#work' },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Work', href: '/work' },
   { name: 'Blog', href: '/blog' },
 ];
 ---
 
-<header class="w-full py-10 flex items-center justify-between">
-    <a href="/" class="text-2xl font-bold tracking-tighter">
-        Product<span class="text-neutral-400">Designer.</span>
+<header class="w-full py-10 flex items-center justify-between relative">
+    <a href="/" class="text-2xl font-bold tracking-tighter text-neutral-900">
+        asu<span class="text-neutral-400">aksu</span>
     </a>
     
+    <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center space-x-8">
         {links.map(link => (
             <a 
                 href={link.href} 
                 class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
-               >
+            >
                 {link.name}
             </a>
         ))}
     </nav>
     
     <a 
-        href="/#contact" 
-        class="px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+        href="/contact" 
+        class="hidden md:inline-flex px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
     >
         Let's Talk
     </a>
+
+    <!-- Mobile Hamburger Button -->
+    <button 
+        id="mobile-menu-btn"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5"
+        aria-label="Toggle navigation menu"
+    >
+        <span class="block w-6 h-0.5 bg-neutral-900 transition-all duration-300" id="bar-1"></span>
+        <span class="block w-6 h-0.5 bg-neutral-900 transition-all duration-300" id="bar-2"></span>
+        <span class="block w-4 h-0.5 bg-neutral-900 transition-all duration-300 self-end" id="bar-3"></span>
+    </button>
+
+    <!-- Mobile Menu Overlay -->
+    <div 
+        id="mobile-menu"
+        class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+        <button 
+            id="mobile-close-btn"
+            class="absolute top-10 right-6 w-10 h-10 flex items-center justify-center"
+            aria-label="Close navigation menu"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        {links.map(link => (
+            <a href={link.href} class="text-3xl font-semibold text-neutral-900 hover:text-neutral-500 transition-colors tracking-tight">
+                {link.name}
+            </a>
+        ))}
+        <a href="/contact" class="mt-4 px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-colors">
+            Let's Talk
+        </a>
+    </div>
 </header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('mobile-close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = '';
+  });
+</script>
