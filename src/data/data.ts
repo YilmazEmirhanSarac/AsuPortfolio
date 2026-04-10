@@ -1,8 +1,9 @@
 export const siteMetadata = {
-  title: "Asu Pınar Aksu | Portfolio",
-  description: "A minimalist portfolio for a Product Designer focusing on UI/UX, Research, and Mentorship.",
+  title: "Asu Pınar Aksu | Product Designer",
+  description: "Research-driven Product Designer specializing in user research, data analysis, and insight generation to create user-centered, meaningful digital products.",
   author: "Asu Pınar Aksu",
-  email: "hello@example.com",
+  siteUrl: "https://asu-aksu.com",
+  email: "hello@asu-aksu.com", // TODO: Configure email hosting first
 };
 
 export const services = [

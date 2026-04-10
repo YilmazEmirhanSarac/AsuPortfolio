@@ -9,9 +9,11 @@ interface Props {
 }
 
 const { 
-  title = "Asu Pınar Aksu | Product & Service Designer",
-  description = "A minimalist portfolio for Asu Pınar Aksu — Product & Service Designer focusing on UI/UX, Research, and Mentorship."
+  title = "Asu Pınar Aksu | Product Designer",
+  description = "Research-driven Product Designer specializing in user research, data analysis, and insight generation to create user-centered, meaningful digital products."
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://asu-aksu.com');
 ---
 
 <!doctype html>
@@ -20,6 +22,7 @@ const {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalURL.href} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
