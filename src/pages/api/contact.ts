@@ -35,7 +35,7 @@ export const POST: APIRoute = async ({ request }) => {
     const resend = new Resend(resendApiKey);
 
     await resend.emails.send({
-      from: `Portfolio <onboarding@resend.dev>`, // Must be an authorized domain in actual Resend portal
+      from: `Asu Aksu <hello@asu-aksu.com>`, // Requires verified domain in Resend
       to: [siteMetadata.email], 
       subject: `New Portfolio Inquiry: ${serviceType}`,
       html: `

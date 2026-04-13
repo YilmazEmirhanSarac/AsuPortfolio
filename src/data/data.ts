@@ -3,7 +3,7 @@ export const siteMetadata = {
   description: "Research-driven Product Designer specializing in user research, data analysis, and insight generation to create user-centered, meaningful digital products.",
   author: "Asu Pınar Aksu",
   siteUrl: "https://asu-aksu.com",
-  email: "hello@asu-aksu.com", // TODO: Configure email hosting first
+  email: "hello@asu-aksu.com",
 };
 
 export const services = [
