@@ -1,16 +1,27 @@
 ---
-import { siteMetadata } from '../data/data';
+import { getLangFromUrl, useTranslations, languages } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const prefix = lang === 'en' ? '' : `/${lang}`;
+const otherLang = lang === 'en' ? 'tr' : 'en';
+const otherPrefix = otherLang === 'en' ? '' : `/${otherLang}`;
+
+// Build the equivalent path in the other language
+const currentPath = Astro.url.pathname;
+const pathWithoutLang = lang === 'en' ? currentPath : currentPath.replace(/^\/tr/, '') || '/';
+const switchUrl = otherLang === 'en' ? pathWithoutLang : `/tr${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
 
 const links = [
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Work', href: '/work' },
-  { name: 'Blog', href: '/blog' },
+  { name: t('nav.about'), href: `${prefix}/about` },
+  { name: t('nav.services'), href: `${prefix}/services` },
+  { name: t('nav.work'), href: `${prefix}/work` },
+  { name: t('nav.blog'), href: `${prefix}/blog` },
 ];
 ---
 
 <header class="w-full py-10 flex items-center justify-between relative">
-    <a href="/" class="text-2xl font-bold tracking-tighter text-neutral-900">
+    <a href={`${prefix}/`} class="text-2xl font-bold tracking-tighter text-neutral-900">
         asu<span class="text-neutral-400">aksu</span>
     </a>
     
@@ -26,12 +37,38 @@ const links = [
         ))}
     </nav>
     
-    <a 
-        href="/contact" 
-        class="hidden md:inline-flex px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
-    >
-        Let's Talk
-    </a>
+    <div class="hidden md:flex items-center space-x-4">
+        <a 
+            href={`${prefix}/contact`}
+            class="px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+        >
+            {t('nav.contact')}
+        </a>
+
+        <!-- Language Switcher Pill -->
+        <div class="flex items-center border border-neutral-200 rounded-full overflow-hidden text-xs font-medium tracking-wide uppercase">
+            <a 
+                href={lang === 'en' ? '#' : switchUrl}
+                class:list={[
+                    'px-3 py-1.5 transition-colors',
+                    lang === 'en' ? 'bg-neutral-900 text-white' : 'text-neutral-400 hover:text-neutral-900'
+                ]}
+                aria-label="English"
+            >
+                EN
+            </a>
+            <a 
+                href={lang === 'tr' ? '#' : switchUrl}
+                class:list={[
+                    'px-3 py-1.5 transition-colors',
+                    lang === 'tr' ? 'bg-neutral-900 text-white' : 'text-neutral-400 hover:text-neutral-900'
+                ]}
+                aria-label="Türkçe"
+            >
+                TR
+            </a>
+        </div>
+    </div>
 
     <!-- Mobile Hamburger Button -->
     <button 
@@ -64,8 +101,16 @@ const links = [
                 {link.name}
             </a>
         ))}
-        <a href="/contact" class="mt-4 px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-colors">
-            Let's Talk
+        <a href={`${prefix}/contact`} class="mt-4 px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-colors">
+            {t('nav.contact')}
+        </a>
+        
+        <!-- Mobile Language Switcher -->
+        <a 
+            href={switchUrl}
+            class="mt-2 text-sm font-medium text-neutral-400 hover:text-neutral-900 transition-colors uppercase tracking-widest"
+        >
+            {languages[otherLang]}
         </a>
     </div>
 </header>

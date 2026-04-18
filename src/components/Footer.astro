@@ -1,10 +1,14 @@
 ---
-import { siteMetadata } from '../data/data';
+import { siteMetadata } from '../data/en';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="w-full py-12 mt-20 border-t border-neutral-200/60 flex flex-col md:flex-row items-center justify-between text-sm text-neutral-500">
-    <p>&copy; {currentYear} {siteMetadata.author}. All rights reserved.</p>
+    <p>&copy; {currentYear} {siteMetadata.author}. {t('footer.rights')}</p>
     
     <div class="flex items-center space-x-6 mt-6 md:mt-0">
         <a href="https://www.linkedin.com/in/asupinaraksu/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition-colors">LinkedIn</a>

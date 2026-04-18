@@ -1,28 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { siteMetadata, services, featuredWorks } from '../data/en';
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { siteMetadata, services, featuredWorks } from '../../data/tr';
 ---
 
-<Layout title={siteMetadata.title} description={siteMetadata.description}>
+<Layout title="Asu Pınar Aksu | Ürün Tasarımcısı" description="Kullanıcı araştırması, veri analizi ve içgörü üretimine odaklanan araştırma odaklı Ürün Tasarımcısı.">
     <!-- Hero Section -->
     <section class="pt-24 pb-32 md:pt-32 md:pb-40">
-        <p class="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-6">Product Designer</p>
+        <p class="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-6">Ürün Tasarımcısı</p>
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-neutral-900 leading-[1.1] mb-8">
-            Research-driven <span class="text-neutral-400">design</span> <br class="hidden md:block" />
-            for meaningful <br class="hidden md:block" />
-            digital products.
+            Araştırma odaklı <span class="text-neutral-400">tasarım,</span> <br class="hidden md:block" />
+            anlamlı dijital <br class="hidden md:block" />
+            ürünler için.
         </h1>
         <p class="text-lg md:text-xl text-neutral-500 max-w-2xl leading-relaxed mb-12">
-            Hi, I'm <strong class="text-neutral-900 font-medium">Asu Pınar Aksu</strong>. I specialize in user research, data analysis, and insight generation to create user-centered experiences — from field observations to pixel-perfect interfaces.
+            Merhaba, ben <strong class="text-neutral-900 font-medium">Asu Pınar Aksu</strong>. Kullanıcı araştırması, veri analizi ve içgörü üretimi konusunda uzmanlaşarak kullanıcı odaklı deneyimler tasarlıyorum.
         </p>
         <div class="flex items-center space-x-4">
-            <a href="/work" class="px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-all duration-300">
-                View My Work
+            <a href="/tr/work" class="px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-all duration-300">
+                Çalışmalarım
             </a>
-            <a href="/about" class="px-8 py-4 bg-white text-neutral-900 font-medium rounded-full border border-neutral-200 hover:border-neutral-900 transition-all duration-300">
-                More About Me
+            <a href="/tr/about" class="px-8 py-4 bg-white text-neutral-900 font-medium rounded-full border border-neutral-200 hover:border-neutral-900 transition-all duration-300">
+                Hakkımda
             </a>
         </div>
     </section>
@@ -31,11 +31,11 @@ import { siteMetadata, services, featuredWorks } from '../data/en';
     <section class="py-24 border-t border-neutral-100">
         <div class="flex items-end justify-between mb-16">
             <div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">What I Do</h2>
-                <p class="text-neutral-500 max-w-xl text-lg">A holistic approach to product and service design.</p>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">Ne Yapıyorum</h2>
+                <p class="text-neutral-500 max-w-xl text-lg">Ürün ve hizmet tasarımına bütünsel bir yaklaşım.</p>
             </div>
-            <a href="/services" class="hidden md:flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
-                <span>All Services</span>
+            <a href="/tr/services" class="hidden md:flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+                <span>Tüm Hizmetler</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
@@ -43,15 +43,14 @@ import { siteMetadata, services, featuredWorks } from '../data/en';
             </a>
         </div>
         
-        <!-- Show only service titles as a clean list -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map(service => (
                 <ServiceCard title={service.title} description={service.description} />
             ))}
         </div>
 
-        <a href="/services" class="mt-10 md:hidden flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
-            <span>View All Services</span>
+        <a href="/tr/services" class="mt-10 md:hidden flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+            <span>Tüm Hizmetleri Gör</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -63,11 +62,11 @@ import { siteMetadata, services, featuredWorks } from '../data/en';
     <section class="py-24 border-t border-neutral-100">
         <div class="flex items-end justify-between mb-16">
             <div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">Selected Work</h2>
-                <p class="text-neutral-500 max-w-xl text-lg">Recent projects emphasizing minimalism and usability.</p>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">Seçili Çalışmalar</h2>
+                <p class="text-neutral-500 max-w-xl text-lg">Minimalizm ve kullanılabilirliği ön plana çıkaran projeler.</p>
             </div>
-            <a href="/work" class="hidden md:flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
-                <span>All Projects</span>
+            <a href="/tr/work" class="hidden md:flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+                <span>Tüm Projeler</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
@@ -86,8 +85,8 @@ import { siteMetadata, services, featuredWorks } from '../data/en';
             ))}
         </div>
 
-        <a href="/work" class="mt-10 md:hidden flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
-            <span>View All Projects</span>
+        <a href="/tr/work" class="mt-10 md:hidden flex items-center space-x-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors">
+            <span>Tüm Projeleri Gör</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -99,13 +98,13 @@ import { siteMetadata, services, featuredWorks } from '../data/en';
     <section class="py-24 border-t border-neutral-100">
         <div class="text-center max-w-2xl mx-auto">
             <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.1] mb-6">
-                Let's build something<br />exceptional together.
+                Birlikte harika bir şeyler<br />inşa edelim.
             </h2>
             <p class="text-neutral-500 text-lg mb-10">
-                Whether you need a design system from scratch or want to optimize your user experience, I'm here to help.
+                Sıfırdan bir tasarım sistemi oluşturmanız ya da kullanıcı deneyiminizi optimize etmeniz gerekiyorsa, yardımcı olmak için buradayım.
             </p>
-            <a href="/contact" class="inline-flex px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-all duration-300">
-                Start a Conversation
+            <a href="/tr/contact" class="inline-flex px-8 py-4 bg-neutral-900 text-white font-medium rounded-full hover:bg-neutral-800 transition-all duration-300">
+                İletişime Geçin
             </a>
         </div>
     </section>

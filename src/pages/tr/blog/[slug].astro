@@ -1,12 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog', (entry) => entry.id.startsWith('en/'));
+  const blogEntries = await getCollection('blog', (entry) => entry.id.startsWith('tr/'));
   return blogEntries.map(entry => ({
-    params: { slug: entry.id.replace('en/', '') },
+    params: { slug: entry.id.replace('tr/', '') },
     props: { entry },
   }));
 }
@@ -18,7 +18,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const formattedDate = new Intl.DateTimeFormat('en-US', {
+const formattedDate = new Intl.DateTimeFormat('tr-TR', {
   month: 'long',
   day: 'numeric',
   year: 'numeric'
@@ -45,12 +45,12 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         
         <!-- Post Footer -->
         <footer class="mt-20 pt-10 border-t border-neutral-100 flex items-center justify-between">
-            <a href="/blog" class="text-neutral-500 hover:text-neutral-900 font-medium transition-colors flex items-center space-x-2">
+            <a href="/tr/blog" class="text-neutral-500 hover:text-neutral-900 font-medium transition-colors flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
-                <span>Back to Blog</span>
+                <span>Blog'a Dön</span>
             </a>
         </footer>
     </article>

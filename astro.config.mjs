@@ -7,13 +7,25 @@ import mdx from '@astrojs/mdx';
 
 import vercel from '@astrojs/vercel';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), mdx()],
+  integrations: [react(), mdx(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel()
+  adapter: vercel(),
+
+  site: 'https://asu-aksu.com',
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'tr'],
+    routing: {
+      prefixDefaultLocale: false, // English at /, Turkish at /tr/
+    },
+  },
 });

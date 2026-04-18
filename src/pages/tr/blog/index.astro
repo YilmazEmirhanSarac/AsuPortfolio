@@ -1,17 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
 // Get all non-draft blog posts, sorted by newest first
 const allPosts = await getCollection('blog', (entry) => {
-  return entry.data.draft !== true && entry.id.startsWith('en/');
+  return entry.data.draft !== true && entry.id.startsWith('tr/');
 });
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Formatting dates cleanly
+// Formatting dates cleanly for Turkish
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('tr-TR', {
     month: 'long',
     day: 'numeric',
     year: 'numeric'
@@ -19,16 +19,16 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<Layout title="Blog | Asu Pınar Aksu" description="Thoughts on design strategy, research, and minimalism.">
+<Layout title="Blog | Asu Pınar Aksu" description="Tasarım stratejisi, araştırma ve minimalizm üzerine yazılar.">
     <div class="max-w-3xl mx-auto py-12">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 mb-6">Writing & Thoughts</h1>
-        <p class="text-lg text-neutral-500 mb-16">Occasional reflections on design systems, user research, and optimizing the digital experience.</p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 mb-6">Yazılar & Düşünceler</h1>
+        <p class="text-lg text-neutral-500 mb-16">Tasarım sistemleri, kullanıcı araştırması ve dijital deneyimi optimize etme üzerine ara sıra düşünceler.</p>
 
         <div class="flex flex-col space-y-12">
             {posts.length > 0 ? (
                 posts.map(post => (
                     <article class="group">
-                        <a href={`/blog/${post.id.replace('en/', '')}`} class="block">
+                        <a href={`/tr/blog/${post.id.replace('tr/', '')}`} class="block">
                             <h2 class="text-2xl font-semibold text-neutral-900 group-hover:text-neutral-500 transition-colors tracking-tight mb-2">
                                 {post.data.title}
                             </h2>
@@ -40,7 +40,7 @@ const formatDate = (date: Date) => {
                     </article>
                 ))
             ) : (
-                <p class="text-neutral-500 italic">No posts published yet. Stay tuned!</p>
+                <p class="text-neutral-500 italic">Henüz yayınlanmış yazı yok. Beklemede kalın!</p>
             )}
         </div>
     </div>
