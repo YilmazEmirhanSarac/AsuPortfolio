@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
-import { siteMetadata } from '../../data/data';
+import { siteMetadata } from '../../data/en';
 
 // Support SSR natively in Astro allowing endpoints
 export const prerender = false;
