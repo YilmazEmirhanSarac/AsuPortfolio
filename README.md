@@ -2,6 +2,8 @@
 
 A minimalist personal website, portfolio, and blog for **Asu Pınar Aksu**, a Product & Service Designer specializing in user-centered design, design systems, and mentorship.
 
+**Live Website:** [asu-aksu.com](https://asu-aksu.com/)
+
 ## Tech Stack
 
 | Layer | Technology |
